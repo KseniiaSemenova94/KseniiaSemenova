@@ -1,19 +1,15 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertThrows;
 
-public class DivideTest {
-    private Calculator calculator;
+public class DivideTest extends BaseClass {
 
-    @BeforeTest
-    public void beforeTest() {
-        calculator = new Calculator();
-    }
+    // TODO It could be extracted to BaseClass - fixed
+
+    // TODO It could be extracted to BaseClass - fixed
+    // TODO Why is it BeforeTest? - changed to BeforeMethod in new class BaseClass
 
     @Test(dataProviderClass = DataProviders.class,
             dataProvider = "divide-data-set-double")

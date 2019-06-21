@@ -1,19 +1,16 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class AddTest {
+public class AddTest extends BaseClass {
 
-    private Calculator calculator;
+    // TODO It could be extracted to BaseClass - fixed
 
-    @BeforeTest
-    public void beforeTest() {
-        calculator = new Calculator();
-    }
+    // TODO It could be extracted to BaseClass - fixed
+    // TODO Why is it BeforeTest? - changed to BeforeMethod in new class BaseClass
+    // I read about the difference between the annotations once again
 
     @Test(dataProviderClass = DataProviders.class,
             dataProvider = "add-data-set-double")

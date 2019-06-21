@@ -1,19 +1,15 @@
 package hw1;
 
-import com.epam.tat.module4.Calculator;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class SubtractTest {
+public class SubtractTest extends BaseClass {
 
-    private Calculator calculator;
+    // TODO It could be extracted to BaseClass - fixed
 
-    @BeforeTest
-    public void beforeTest() {
-        calculator = new Calculator();
-    }
+    // TODO It could be extracted to BaseClass - fixed
+    // TODO Why is it BeforeTest? - changed to BeforeMethod in new class BaseClass
 
     @Test(dataProviderClass = DataProviders.class,
             dataProvider = "subtract-data-set-double")
@@ -28,7 +24,5 @@ public class SubtractTest {
         long actual = calculator.sub(a, b);
         assertEquals(result, actual);
     }
-
-
 
 }
