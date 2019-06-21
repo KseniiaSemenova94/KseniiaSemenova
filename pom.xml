@@ -16,6 +16,36 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>all-test-suite</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/all-test-suite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>add-subtract-suite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/add-subtract-suite.xml</suite.xml>
+            </properties>
+        </profile>
+        <profile>
+            <id>multiply-divide-suite</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/multiply-divide-suite.xml</suite.xml>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -38,6 +68,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.xml}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
             </plugin>
         </plugins>
     </build>
