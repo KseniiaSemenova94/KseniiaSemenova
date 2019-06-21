@@ -5,6 +5,8 @@ import org.testng.annotations.DataProvider;
 public class DataProviders {
 
     //  TODO Why do you choose this set of data?
+    // At very large and very small values there is a loss of accuracy, I decided to check these cases.
+
     @DataProvider(name = "add-data-set-double")
     public Object[][] addTestDoubleDataSet() {
         return new Object[][]{
@@ -28,8 +30,8 @@ public class DataProviders {
     @DataProvider(name = "subtract-data-set-double")
     public Object[][] subtractDoubleTestDataSet() {
         return new Object[][]{
-                {84.555, 15.445, 69.11000000000001},
-                {74.5258699999, 25.000000256, 49.525869743899996},
+                {84.555, 15.445, 69.11},
+                {74.5258699999, 25.000000256, 49.5258697439},
                 {0, 0, 0},
                 {0.0001, -0.005, 0.0051}
         };
@@ -48,11 +50,11 @@ public class DataProviders {
     @DataProvider(name = "multiply-data-set-double")
     public Object[][] multiplyDoubleTestDataSet() {
         return new Object[][]{
-                {84.555, 15.445, 1305.0},
-                {74.5258699999, 25.000000256, 1863.0},
+                {84.555, 15.445, 1305.951975},
+                {74.5258699999, 25.000000256, 1863.1467690761227199744},
                 {0, 0, 0},
-                {0.0001, -0.005, -1.0},
-                {100000000000000L, 100000000000000000L, 1.0E31}
+                {0.0001, -0.005, -0.0000005},
+                {100000000000000D, 100000000000000000D, 10000000000000000000000000000000D}
         };
     }
 
@@ -62,7 +64,7 @@ public class DataProviders {
                 {2, 2, 4},
                 {258884693, 5866669, 1518790802997617L},
                 {0, 0, 0},
-                {58246, 478888888123569L, -9000125969773703258L}
+                {58246, 478888123569L, 27893317645399974L}
         };
     }
 
@@ -70,9 +72,8 @@ public class DataProviders {
     public Object[][] divideDoubleTestDataSet() {
         return new Object[][]{
                 {0, 1, 0},
-                {1, 0, Double.POSITIVE_INFINITY},
-                {84.555, 15.445, 5.474587245063128},
-                {74.5258699999, 25.000000256, 2.9810347694702037},
+                {84.555, 15.445, 5.47458724506312722563936549045},
+                {74.5258699999, 25.000000256, 2.9810347694702039606251114431989},
                 {1, 1, 1},
                 {0.0001, -0.005, -0.02},
                 {100000000000000L, 100000000000000000L, 0.001}
@@ -83,9 +84,9 @@ public class DataProviders {
     public Object[][] divideLongDoubleTestDataSet() {
         return new Object[][]{
                 {2, 2, 1},
-                {258884693, 5866669, 44},
+                {258884693, 5866669, 44.128055119523532007686133306652},
                 {1, 1, 1},
-                {58246, 478888888123569L, 0}
+                {58246, 478888888123569L, 1.2162737838462985276114753726371e-10}
         };
     }
 
