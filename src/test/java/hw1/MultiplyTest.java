@@ -8,8 +8,11 @@ import static org.testng.Assert.assertEquals;
 
 public class MultiplyTest {
 
+    // TODO It could be extracted to BaseClass
     private Calculator calculator;
 
+    // TODO It could be extracted to BaseClass
+    // TODO Why is it BeforeTest?
     @BeforeTest
     public void beforeTest() {
         calculator = new Calculator();
