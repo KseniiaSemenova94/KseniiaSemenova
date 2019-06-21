@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class AddTest {
+public class MultiplyTest {
 
     private Calculator calculator;
 
@@ -16,16 +16,16 @@ public class AddTest {
     }
 
     @Test(dataProviderClass = DataProviders.class,
-            dataProvider = "add-data-set-double")
-    public void addTestDouble(double a, double b, double result) {
-        double actual = calculator.sum(a, b);
+            dataProvider = "multiply-data-set-double")
+    public void multiplyTestDouble(double a, double b, double result) {
+        double actual = calculator.mult(a, b);
         assertEquals(result, actual);
     }
 
     @Test(dataProviderClass = DataProviders.class,
-            dataProvider = "add-data-set-long")
-    public void addTestLong(long a, long b, long result) {
-        long actual = calculator.sum(a, b);
+            dataProvider = "multiply-data-set-long")
+    public void multiplyTestLong(long a, long b, long result) {
+        long actual = calculator.mult(a, b);
         assertEquals(result, actual);
     }
 
