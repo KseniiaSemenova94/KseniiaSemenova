@@ -2,11 +2,7 @@ package hw2.ex1;
 
 import hw2.base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -17,7 +13,7 @@ public class Exercise1 extends BaseTest {
     public void exercise1Test() {
 
         // 1. Open test site by URL
-        assertEquals(driver.getCurrentUrl(), SITE_URL);
+        assertEquals(driver.getCurrentUrl(), INDEX_PAGE_URL);
 
         // 2. Assert Browser title
         assertEquals(driver.getTitle(), BROWSER_HOME_PAGE_TITLE);
@@ -44,9 +40,9 @@ public class Exercise1 extends BaseTest {
         elementDisplayedAndHasText("EPAM FRAMEWORK WISHES…", MAIN_TITLE_LOCATOR);
 
         elementDisplayedAndHasText("LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
-                "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS " +
-                "NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR " +
-                "IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.",
+                        "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS " +
+                        "NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR " +
+                        "IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.",
                 MAIN_SUBTITLE_LOCATOR); //
 
         // 10. Assert that there is the iframe in the center of page
