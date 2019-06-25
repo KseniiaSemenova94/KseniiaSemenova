@@ -43,7 +43,26 @@
             <properties>
                 <suite.xml>src/test/resources/multiply-divide-suite.xml</suite.xml>
             </properties>
+            </profile>
+            <profile>
+            <id>exercise1-suite</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/exercise1-suite.xml</suite.xml>
+            </properties>
         </profile>
+        <profile>
+            <id>exercise2-suite</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/exercise2-suite.xml</suite.xml>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
