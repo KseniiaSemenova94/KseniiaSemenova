@@ -62,7 +62,6 @@
                 <suite.xml>src/test/resources/exercise2-suite.xml</suite.xml>
             </properties>
         </profile>
-
     </profiles>
 
     <dependencies>

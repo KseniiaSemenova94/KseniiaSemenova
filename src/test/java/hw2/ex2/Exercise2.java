@@ -1,17 +1,16 @@
 package hw2.ex2;
 
 import hw2.base.BaseTest;
+import hw2.base.ControlType;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class Exercise2 extends BaseTest {
@@ -58,30 +57,21 @@ public class Exercise2 extends BaseTest {
         assertTrue(driver.findElement(By.id("mCSB_1")).isDisplayed());
 
         // 11. Select checkboxes
-        List<WebElement> checkboxLabels = driver.findElements(By.xpath("//label[@class='label-checkbox']"));
-        List<WebElement> selectedLabels = new ArrayList<>();
-        for (WebElement we : checkboxLabels) {
-            if (we.getText().equals("Water") || we.getText().equals("Wind")) {
-                we.click();
-                we.findElement(By.tagName("input")).isSelected();
-                selectedLabels.add(we);
-            }
-        }
-
         // 12. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        testLog(selectedLabels);
+        testSelectElements(Arrays.asList("Water", "Wind"), ControlType.CHECKBOX);
+
+        // 13. Select radio
+        // 14. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
+        testSelectElements(Collections.singletonList("Selen"), ControlType.RADIO);
+
+        // 15. Select in dropdown
+        // 16. Assert that for dropdown there is a log row and value is corresponded to the selected value.
+        testSelectElements(Collections.singletonList("Yellow"), ControlType.DROPDOWN);
+
+        // 17. Unselect and assert checkboxes
+        // 18. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
+        testSelectElements(Arrays.asList("Water", "Wind"), ControlType.CHECKBOX);
     }
 
-    protected void testLog(List<WebElement> elements) {
-        SoftAssert sa = new SoftAssert();
-        Collections.reverse(elements);
-        List<WebElement> logElements = driver.findElements(By.xpath("//ul[@class='panel-body-list logs']/li"));
-        for (int i = 0; i < elements.size(); i++) {
-            sa.assertTrue(logElements.get(i).isDisplayed());
-            String logText = logElements.get(i).getText();
-            String name = logText.substring(logText.indexOf(" ") + 1, logText.lastIndexOf(":"));
-            assertEquals(elements.get(i).getText(), name);
-        }
-        sa.assertAll();
-    }
 }
+

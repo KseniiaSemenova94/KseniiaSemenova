@@ -1,6 +1,6 @@
 package hw2.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,12 +11,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class BaseTest {
@@ -44,12 +46,13 @@ public class BaseTest {
     protected final By SERVICE_ELEMENTS_LOCATOR_TOP = By.xpath("//ul[@class='dropdown-menu']/li");
     protected final By SERVICE_ELEMENTS_LOCATOR_LEFT = By.xpath("//li[@class='menu-title' and @index='3']/ul//a");
 
-
     protected WebDriver driver;
 
     @BeforeSuite
     public void setUpDriverPath() {
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver",
+                Paths.get("src/test/resources/driver/chromedriver.exe")
+                        .toAbsolutePath().toString());
     }
 
     @BeforeMethod
@@ -102,4 +105,40 @@ public class BaseTest {
         assertTrue(element.isDisplayed());
         assertEquals(element.getText(), text);
     }
+
+    protected void testSelectElements(List<String> texts, ControlType type) {
+        texts.stream().forEach(text -> {
+            if (type == ControlType.DROPDOWN) {
+                WebElement select = driver.findElement(By.cssSelector("select.uui-form-element"));
+                select.click();
+                WebElement option = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
+                option.click();
+                assertTrue(option.isSelected());
+                testLog(option.getText(), type, option.isSelected());
+            }
+            if (type == ControlType.CHECKBOX || type == ControlType.RADIO) {
+                WebElement label = driver.findElement(By.xpath("//label[contains(.,'" + text + "')]"));
+                WebElement input = label.findElement(By.tagName("input"));
+                boolean initSelect = input.isSelected();
+                input.click();
+                if (type != ControlType.CHECKBOX || !initSelect) {
+                    assertTrue(input.isSelected());
+                } else {
+                    assertFalse(input.isSelected());
+                }
+                testLog(label.getText(), type, input.isSelected());
+            }
+        });
+    }
+
+
+    private void testLog(String elementText, ControlType type, boolean isSelected) {
+        WebElement logElement = driver.findElement(By.cssSelector(".panel-body-list > li:first-child"));
+        assertTrue(logElement.isDisplayed());
+        assertTrue(logElement.getText().contains(elementText));
+        if (type == ControlType.CHECKBOX) {
+            assertTrue(logElement.getText().contains(isSelected ? "true" : "false"));
+        }
+    }
+
 }
