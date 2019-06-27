@@ -4,9 +4,6 @@ import org.testng.annotations.DataProvider;
 
 public class DataProviders {
 
-    //  TODO Why do you choose this set of data?
-    // At very large and very small values there is a loss of accuracy, I decided to check these cases.
-
     @DataProvider(name = "add-data-set-double")
     public Object[][] addTestDoubleDataSet() {
         return new Object[][]{

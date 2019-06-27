@@ -6,11 +6,6 @@ import static org.testng.Assert.assertEquals;
 
 public class DivideTest extends BaseClass {
 
-    // TODO It could be extracted to BaseClass - fixed
-
-    // TODO It could be extracted to BaseClass - fixed
-    // TODO Why is it BeforeTest? - changed to BeforeMethod in new class BaseClass
-
     @Test(dataProviderClass = DataProviders.class,
             dataProvider = "divide-data-set-double")
     public void divideTestDouble(double a, double b, double result) {

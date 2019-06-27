@@ -23,6 +23,7 @@ import static org.testng.Assert.assertTrue;
 
 public class BaseTest {
 
+    // TODO Please follow java code convention for the class field names or make it as constants
     protected final String USER_LOGIN = "epam";
     protected final String USER_PASSWORD = "1234";
     protected final String USER_NAME = "PITER CHAILOVSKII";
@@ -69,6 +70,7 @@ public class BaseTest {
         driver.close();
     }
 
+    // TODO Why suffix Test is here?
     protected void loginTest(String login, String password, String userName) {
         driver.findElement(By.id("user-icon")).click();
         driver.findElement(By.id("name")).sendKeys(login);
@@ -106,7 +108,9 @@ public class BaseTest {
         assertEquals(element.getText(), text);
     }
 
+    // TODO Why prefix test is here?
     protected void testSelectElements(List<String> texts, ControlType type) {
+        // TODO stream() is redundant here
         texts.stream().forEach(text -> {
             if (type == ControlType.DROPDOWN) {
                 WebElement select = driver.findElement(By.cssSelector("select.uui-form-element"));
@@ -132,6 +136,7 @@ public class BaseTest {
     }
 
 
+    // TODO May be checkLog will be better?
     private void testLog(String elementText, ControlType type, boolean isSelected) {
         WebElement logElement = driver.findElement(By.cssSelector(".panel-body-list > li:first-child"));
         assertTrue(logElement.isDisplayed());
