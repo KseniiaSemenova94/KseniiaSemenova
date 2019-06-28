@@ -57,20 +57,15 @@ public class Exercise2 extends BaseTest {
 
         assertTrue(differentElementsSteps.isLeftSectionDisplayed());
 
-        differentElementsSteps.selectCheckboxesAndCheckLog(Arrays.asList(CheckboxItem.WATER, CheckboxItem.WIND));
+        differentElementsSteps.selectCheckboxesAndCheckLog(Arrays
+                .asList(CheckboxItem.WATER, CheckboxItem.WIND), false);
 
         differentElementsSteps.selectRadioButtonAndCheckLog(RadioItem.SELEN);
-        // 13. Select radio
-        // 14. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
-//        testSelectElements(Collections.singletonList("Selen"), ControlType.RADIO);
 
-        // 15. Select in dropdown
-        // 16. Assert that for dropdown there is a log row and value is corresponded to the selected value.
-//        testSelectElements(Collections.singletonList("Yellow"), ControlType.DROPDOWN);
+        differentElementsSteps.selectItemsInDropdownAndCheckLog(DropdownValue.YELLOW);
 
-        // 17. Unselect and assert checkboxes
-        // 18. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-//        testSelectElements(Arrays.asList("Water", "Wind"), ControlType.CHECKBOX);
+        differentElementsSteps.selectCheckboxesAndCheckLog(Arrays
+                .asList(CheckboxItem.WATER, CheckboxItem.WIND), true);
     }
 
 }

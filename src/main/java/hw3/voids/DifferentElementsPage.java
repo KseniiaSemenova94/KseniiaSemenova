@@ -92,22 +92,23 @@ public class DifferentElementsPage extends Page {
         return logElements.size() > 0 && logElements.get(0).isDisplayed();
     }
 
-    public boolean isElementPresentInLogs(String elementText, ControlType type, boolean isSelected) {
-        boolean isTextContains = logElements.get(logElements.size() - 1).getText().contains(elementText);
-        boolean isValid = true;
-
-        if (type == ControlType.CHECKBOX) {
-            isValid = logElements.get(0).getText().contains(isSelected ? "true" : "false");
-        }
-
-        return type == ControlType.CHECKBOX ? isTextContains && isValid : isTextContains;
-    }
-
     private WebElement getLabelByText(List<WebElement> items, String text) {
         return items.stream()
                 .filter(control -> control.getText().equals(text))
                 .findAny()
                 .orElse(null);
+    }
+
+    public boolean isElementPresentInLogs(String elementText, ControlType type, boolean initSelected) {
+        String lastElementText = logElements.get(0).getText();
+        boolean isTextContains = lastElementText.contains(elementText);
+        boolean isValid = true;
+
+        if (type == ControlType.CHECKBOX) {
+            isValid = lastElementText.contains(initSelected ? "false" : "true");
+        }
+
+        return type == ControlType.CHECKBOX ? isTextContains && isValid : isTextContains;
     }
 }
 
