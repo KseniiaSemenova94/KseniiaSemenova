@@ -1,6 +1,7 @@
 package hw3.ex1;
 
 import hw3.base.BaseTest;
+import hw3.enums.HeaderMenu;
 import hw3.steps.IndexPageSteps;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
@@ -35,24 +36,20 @@ public class Exercise1 extends BaseTest {
 
         assertEquals(driver.getTitle(), "Home Page");
 
-        indexPageSteps.checkItemsOnTheHeaderSectionAreDisplayedAndHaveText(Arrays.asList("HOME", "CONTACT FORM", "SERVICE",
-                "METALS & COLORS"));
+        indexPageSteps.checkItemsOnTheHeaderSectionAreDisplayedAndHaveText(Arrays.asList(HeaderMenu.HOME.getName(),
+                HeaderMenu.CONTACT_FORM.getName(), HeaderMenu.SERVICE.getName(),
+                HeaderMenu.METALS_AND_COLORS.getName()));
 
-        // 7. Assert that there are 4 images on the Index Page and they are displayed
-//        testItemsDisplayed(4, By.className("icons-benefit"));
+        indexPageSteps.checkImages(4);
 
-        // 8. Assert that there are 4 texts on the Index Page under icons and they have proper text
-//        testItemsDisplayed(UNDER_ICONS_TEXTS.size(), UNDER_ICONS_TEXTS_LOCATOR);
-//        testItemsHasText(UNDER_ICONS_TEXTS, UNDER_ICONS_TEXTS_LOCATOR);
+        indexPageSteps.checkTextUnderImages(4);
 
         // 9. Assert a text of the main headers
-        elementDisplayedAndHasText("EPAM FRAMEWORK WISHES…", MAIN_TITLE_LOCATOR);
-
-        elementDisplayedAndHasText("LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+        indexPageSteps.checkMainHeadersDisplayedAndHasText("EPAM FRAMEWORK WISHES…",
+                "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
                         "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS " +
                         "NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR " +
-                        "IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.",
-                MAIN_SUBTITLE_LOCATOR); //
+                        "IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
         // 10. Assert that there is the iframe in the center of page
         assertTrue(driver.findElement(By.id("iframe")).isDisplayed());

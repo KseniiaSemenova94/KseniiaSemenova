@@ -36,7 +36,6 @@ public class BaseTest {
             .asList("To include good practices\n" + "and ideas from successful\n" + "EPAM project",
                     "To be flexible and\n" + "customizable", "To be multiplatform", "Already have good base\n" +
                             "(about 20 internal and\n" + "some external projects),\n" + "wish to get more…");
-    protected final By UNDER_ICONS_TEXTS_LOCATOR = By.className("benefit-txt");
     protected final By MAIN_TITLE_LOCATOR = By.name("main-title");
     protected final By MAIN_SUBTITLE_LOCATOR = By.name("jdi-text");
     protected final By JDI_GITHUB_LOCATOR =  By.xpath("//h3[@class='text-center']/a");

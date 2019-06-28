@@ -5,7 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Page {
 
@@ -47,7 +50,26 @@ public class Page {
         return userName.getText();
     }
 
-    public List<WebElement> getHeaderItems() {
-        return headerItems;
+    public List<String> getHeaderItemsText() {
+        return getItemText(headerItems);
+    }
+
+    public List<String> getItemText(List<WebElement> items) {
+     return items.stream().map(el -> el.getText()).collect(Collectors.toList());
+    }
+    public String getItemText(WebElement item) {
+       return item.getText();
+    }
+
+    public boolean allHeaderItemsDisplayed() {
+        return allItemsAreDisplayed(headerItems);
+    }
+
+    public int getHeaderItemsSize() {
+        return headerItems.size();
+    }
+
+    protected boolean allItemsAreDisplayed(List<WebElement> items) {
+        return items.stream().allMatch(item -> item.isDisplayed());
     }
 }
