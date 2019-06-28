@@ -1,18 +1,18 @@
 package hw3.voids;
 
+import hw3.enums.LeftSideMenuItem;
+import hw3.enums.HeaderMenuItem;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Page {
 
-    private WebDriver driver;
+    WebDriver driver;
 
     @FindBy(id = "user-icon")
     private WebElement userIcon;
@@ -32,7 +32,29 @@ public class Page {
     @FindBy(xpath = "//ul[@class='uui-navigation nav navbar-nav m-l8']/li")
     private List<WebElement> headerItems;
 
+    @FindBy(id = "mCSB_1")
+    private WebElement leftSection;
 
+    @FindBy(tagName = "footer")
+    private WebElement footer;
+
+    @FindBy(xpath = "//ul[@class='uui-navigation nav navbar-nav m-l8']/li")
+    private List<WebElement> headerMenuItems;
+
+    @FindBy(xpath = "//ul[@class='dropdown-menu']/li")
+    private List<WebElement> openedHeaderDropdownOptions;
+
+    @FindBy(xpath = "//ul[@class='sub']/li//a")
+    private List<WebElement> openedLeftSectionDropdownOptions;
+
+    @FindBy(className = "dropdown-menu")
+    private WebElement headerDropdown;
+
+    @FindBy(className = "sub")
+    private WebElement leftSectionDropdown;
+
+    @FindBy(xpath = "//ul[@class='sidebar-menu']/li")
+    private List<WebElement> leftSectionMenuItems;
 
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -69,7 +91,44 @@ public class Page {
         return headerItems.size();
     }
 
+    public boolean isLeftSectionDisplayed() { return leftSection.isDisplayed(); }
+
+    public boolean isFooterDisplayed() { return footer.isDisplayed(); }
+
+    public void clickOnHeaderMenuItem(HeaderMenuItem headerMenuItem) {
+        clickOnMenuItem(headerMenuItems, headerMenuItem.getName());
+    }
+
+    public void clickOnHeaderDropdownOption(String option) {
+        clickOnMenuItem(openedHeaderDropdownOptions, option);
+    }
+
+    public void clickOnLeftSectionMenuItem(LeftSideMenuItem menuItem) {
+        clickOnMenuItem(leftSectionMenuItems, menuItem.getName());
+    }
+
+    public List<String> getOpenedHeaderDropdownOptionsText() {
+        return getItemText(openedHeaderDropdownOptions);
+    }
+
+    public List<String> getOpenedLeftSectionDropdownOptionsText() {
+        return getItemText(openedLeftSectionDropdownOptions);
+    }
+
+    public boolean isHeaderDropdownDisplayed() {
+        return headerDropdown.isDisplayed();
+    }
+
+    public boolean isLeftSideDropdownDisplayed() {
+        return leftSectionDropdown.isDisplayed();
+    }
+
     protected boolean allItemsAreDisplayed(List<WebElement> items) {
         return items.stream().allMatch(item -> item.isDisplayed());
+    }
+
+    private void clickOnMenuItem(List<WebElement> menuItems, String name) {
+        menuItems.stream().filter(i -> name.equals(i.getText())).findAny()
+                .ifPresent(WebElement::click);
     }
 }

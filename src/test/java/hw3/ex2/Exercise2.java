@@ -1,75 +1,76 @@
 package hw3.ex2;
 
 import hw3.base.BaseTest;
-import hw3.base.ControlType;
-import org.openqa.selenium.By;
+import hw3.enums.*;
+import hw3.steps.DifferentElementsSteps;
+import hw3.steps.IndexPageSteps;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class Exercise2 extends BaseTest {
 
+    public static final List<String> SERVICE_OPTIONS_LIST = Arrays.asList(ServiceOption.SUPPORT.getName(), ServiceOption.DATES.getName(),
+            ServiceOption.SEARCH.getName(), ServiceOption.COMPLEX_TABLE.getName(),
+            ServiceOption.SIMPLE_TABLE.getName(), ServiceOption.USER_TABLE.getName(),
+            ServiceOption.TABLE_WITH_PAGES.getName(), ServiceOption.DIFFERENT_ELEMENTS.getName(),
+            ServiceOption.PERFORMANCE.getName());
+
+    IndexPageSteps indexPageSteps;
+
+    DifferentElementsSteps differentElementsSteps;
+
+    @BeforeMethod
+    @Override
+    public void setUp() {
+        super.setUp();
+        indexPageSteps = new IndexPageSteps(driver);
+        differentElementsSteps = new DifferentElementsSteps(driver);
+    }
+
     @Test
     public void exercise2Test() {
 
-        // 1. Open test site by URL
-        assertEquals(driver.getCurrentUrl(), INDEX_PAGE_URL);
+        assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");
 
-        // 2. Assert Browser title
-//        assertEquals(driver.getTitle(), BROWSER_HOME_PAGE_TITLE);
+        assertEquals(driver.getTitle(), "Home Page");
 
-        // 3. Perform login
-        // 4. Assert User name in the left-top side of screen that user is loggined
-        loginTest(USER_LOGIN, USER_PASSWORD, USER_NAME);
+        indexPageSteps.login("epam", "1234");
 
-        // 5. Click on "Service" subcategory in the header and check that drop down contains options
-        driver.findElement(By.className("dropdown-toggle")).click();
-//        checkItemsDisplayed(SERVICE_DROPDOWN_ELEMENTS.size(), SERVICE_ELEMENTS_LOCATOR_TOP);
-//        checkItemsHasText(SERVICE_DROPDOWN_ELEMENTS.stream().map(el -> el.toUpperCase()).collect(Collectors.toList()),
-//                SERVICE_ELEMENTS_LOCATOR_TOP);
+        assertEquals(indexPageSteps.getUserName(), "PITER CHAILOVSKII");
 
-        // 6. Click on Service subcategory in the left section and check that drop down contains options
-        driver.findElement(By.xpath("//li[@class='menu-title' and @index='3']")).click();
-//        checkItemsDisplayed(SERVICE_DROPDOWN_ELEMENTS.size(), SERVICE_ELEMENTS_LOCATOR_LEFT);
-//        checkItemsHasText(SERVICE_DROPDOWN_ELEMENTS, SERVICE_ELEMENTS_LOCATOR_LEFT);
+        indexPageSteps.clickOnHeaderMenuItemAndCheckOptions(HeaderMenuItem.SERVICE, SERVICE_OPTIONS_LIST);
 
-        // 7. Open through the header menu Service -> Different Elements Page
-        driver.findElement(By.className("dropdown-toggle")).click();
-        driver.findElement(By.xpath("//ul[@class='dropdown-menu']//*[ text() = 'Different elements']")).click();
-        assertEquals(driver.getCurrentUrl(), DIFFERENT_ELEMENTS_PAGE_URL);
+        indexPageSteps.clickOnLeftSectionMenuItemAndCheckOptions(LeftSideMenuItem.SERVICE, SERVICE_OPTIONS_LIST);
 
-        // 8. Check interface on Different elements page, it contains all needed elements
-//        checkItemsDisplayed(4, By.className("label-checkbox"));
-//        checkItemsDisplayed(4, By.className("label-radio"));
-        assertTrue(driver.findElement(By.cssSelector("button[value='Default Button']")).isDisplayed());
-        assertTrue(driver.findElement(By.cssSelector("input.uui-button")).isDisplayed());
+        indexPageSteps.openHeaderMenuDropdownAndSelectOption(HeaderMenuItem.SERVICE, ServiceOption.DIFFERENT_ELEMENTS);
 
-        // 9. Assert that there is Right Section
-        assertTrue(driver.findElement(By.name("log-sidebar")).isDisplayed());
+        differentElementsSteps.checkInterfaceContainsElements(Arrays
+                .asList(ControlType.BUTTON, ControlType.CHECKBOX, ControlType.RADIO, ControlType.DROPDOWN));
 
-        // 10. Assert that there is Left Section
-        assertTrue(driver.findElement(By.id("mCSB_1")).isDisplayed());
+        assertTrue(differentElementsSteps.isRightSectionDisplayed());
 
-        // 11. Select checkboxes
-        // 12. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        testSelectElements(Arrays.asList("Water", "Wind"), ControlType.CHECKBOX);
+        assertTrue(differentElementsSteps.isLeftSectionDisplayed());
 
+        differentElementsSteps.selectCheckboxesAndCheckLog(Arrays.asList(CheckboxItem.WATER, CheckboxItem.WIND));
+
+        differentElementsSteps.selectRadioButtonAndCheckLog(RadioItem.SELEN);
         // 13. Select radio
         // 14. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton.
-        testSelectElements(Collections.singletonList("Selen"), ControlType.RADIO);
+//        testSelectElements(Collections.singletonList("Selen"), ControlType.RADIO);
 
         // 15. Select in dropdown
         // 16. Assert that for dropdown there is a log row and value is corresponded to the selected value.
-        testSelectElements(Collections.singletonList("Yellow"), ControlType.DROPDOWN);
+//        testSelectElements(Collections.singletonList("Yellow"), ControlType.DROPDOWN);
 
         // 17. Unselect and assert checkboxes
         // 18. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        testSelectElements(Arrays.asList("Water", "Wind"), ControlType.CHECKBOX);
+//        testSelectElements(Arrays.asList("Water", "Wind"), ControlType.CHECKBOX);
     }
 
 }

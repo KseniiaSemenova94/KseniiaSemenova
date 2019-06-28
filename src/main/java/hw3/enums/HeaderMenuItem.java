@@ -1,6 +1,6 @@
 package hw3.enums;
 
-public enum HeaderMenu {
+public enum HeaderMenuItem {
     HOME("HOME"),
     CONTACT_FORM("CONTACT FORM"),
     SERVICE("SERVICE"),
@@ -8,7 +8,7 @@ public enum HeaderMenu {
 
     final String name;
 
-    HeaderMenu(String name) {
+    HeaderMenuItem(String name) {
         this.name = name;
     }
 

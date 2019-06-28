@@ -20,6 +20,17 @@ public class IndexPage extends Page {
     @FindBy(name = "jdi-text")
     private WebElement mainSubtitle;
 
+    @FindBy(id = "iframe")
+    private WebElement iframe;
+
+
+    @FindBy(id = "epam_logo")
+    private WebElement epamLogo;
+
+
+    @FindBy(xpath = "//h3[@class='text-center']/a")
+    private WebElement mainLink;
+
 
     public IndexPage(WebDriver driver) {
         super(driver);
@@ -56,5 +67,19 @@ public class IndexPage extends Page {
     public String getMainSubtitleText() {
         return mainSubtitle.getText();
     }
+
+    public boolean isIFrameDisplayed() { return iframe.isDisplayed(); }
+
+    public void switchToIFrame() { driver.switchTo().frame("iframe"); }
+
+    public boolean isLogoDisplayed() { return epamLogo.isDisplayed(); }
+
+    public void switchToDefaultContent() { driver.switchTo().defaultContent(); }
+
+    public boolean isMainLinkDisplayed() { return mainLink.isDisplayed(); }
+
+    public String getMainLinkText() { return mainLink.getText(); }
+
+    public String getMainLinkURL() { return mainLink.getAttribute("href"); }
 
 }
