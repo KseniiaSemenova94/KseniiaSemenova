@@ -20,21 +20,21 @@ public class Exercise1 extends BaseTest {
 
         // 3. Perform login
         // 4. Assert User name in the left-top side of screen that user is loggined
-        loginTest(USER_LOGIN, USER_PASSWORD, USER_NAME);
+        login(USER_LOGIN, USER_PASSWORD, USER_NAME);
 
         // 5. Assert Browser title
         assertEquals(driver.getTitle(), BROWSER_HOME_PAGE_TITLE);
 
         // 6. Assert that there are 4 items on the header section are displayed and they have proper texts
-        testItemsDisplayed(HEADER_TEXT_ELEMENTS.size(), HEADER_TEXT_LOCATOR);
-        testItemsHasText(HEADER_TEXT_ELEMENTS, HEADER_TEXT_LOCATOR);
+        checkItemsDisplayed(HEADER_TEXT_ELEMENTS.size(), HEADER_TEXT_LOCATOR);
+        checkItemsHasText(HEADER_TEXT_ELEMENTS, HEADER_TEXT_LOCATOR);
 
         // 7. Assert that there are 4 images on the Index Page and they are displayed
-        testItemsDisplayed(4, By.className("icons-benefit"));
+        checkItemsDisplayed(4, By.className("icons-benefit"));
 
         // 8. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        testItemsDisplayed(UNDER_ICONS_TEXTS.size(), UNDER_ICONS_TEXTS_LOCATOR);
-        testItemsHasText(UNDER_ICONS_TEXTS, UNDER_ICONS_TEXTS_LOCATOR);
+        checkItemsDisplayed(UNDER_ICONS_TEXTS.size(), UNDER_ICONS_TEXTS_LOCATOR);
+        checkItemsHasText(UNDER_ICONS_TEXTS, UNDER_ICONS_TEXTS_LOCATOR);
 
         // 9. Assert a text of the main headers
         elementDisplayedAndHasText("EPAM FRAMEWORK WISHES…", MAIN_TITLE_LOCATOR);

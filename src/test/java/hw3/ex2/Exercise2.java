@@ -29,14 +29,14 @@ public class Exercise2 extends BaseTest {
 
         // 5. Click on "Service" subcategory in the header and check that drop down contains options
         driver.findElement(By.className("dropdown-toggle")).click();
-//        testItemsDisplayed(SERVICE_DROPDOWN_ELEMENTS.size(), SERVICE_ELEMENTS_LOCATOR_TOP);
-//        testItemsHasText(SERVICE_DROPDOWN_ELEMENTS.stream().map(el -> el.toUpperCase()).collect(Collectors.toList()),
+//        checkItemsDisplayed(SERVICE_DROPDOWN_ELEMENTS.size(), SERVICE_ELEMENTS_LOCATOR_TOP);
+//        checkItemsHasText(SERVICE_DROPDOWN_ELEMENTS.stream().map(el -> el.toUpperCase()).collect(Collectors.toList()),
 //                SERVICE_ELEMENTS_LOCATOR_TOP);
 
         // 6. Click on Service subcategory in the left section and check that drop down contains options
         driver.findElement(By.xpath("//li[@class='menu-title' and @index='3']")).click();
-//        testItemsDisplayed(SERVICE_DROPDOWN_ELEMENTS.size(), SERVICE_ELEMENTS_LOCATOR_LEFT);
-//        testItemsHasText(SERVICE_DROPDOWN_ELEMENTS, SERVICE_ELEMENTS_LOCATOR_LEFT);
+//        checkItemsDisplayed(SERVICE_DROPDOWN_ELEMENTS.size(), SERVICE_ELEMENTS_LOCATOR_LEFT);
+//        checkItemsHasText(SERVICE_DROPDOWN_ELEMENTS, SERVICE_ELEMENTS_LOCATOR_LEFT);
 
         // 7. Open through the header menu Service -> Different Elements Page
         driver.findElement(By.className("dropdown-toggle")).click();
@@ -44,8 +44,8 @@ public class Exercise2 extends BaseTest {
         assertEquals(driver.getCurrentUrl(), DIFFERENT_ELEMENTS_PAGE_URL);
 
         // 8. Check interface on Different elements page, it contains all needed elements
-//        testItemsDisplayed(4, By.className("label-checkbox"));
-//        testItemsDisplayed(4, By.className("label-radio"));
+//        checkItemsDisplayed(4, By.className("label-checkbox"));
+//        checkItemsDisplayed(4, By.className("label-radio"));
         assertTrue(driver.findElement(By.cssSelector("button[value='Default Button']")).isDisplayed());
         assertTrue(driver.findElement(By.cssSelector("input.uui-button")).isDisplayed());
 
