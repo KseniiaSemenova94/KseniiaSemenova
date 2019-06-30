@@ -17,6 +17,9 @@ import java.util.List;
 
 import static org.testng.Assert.*;
 
+// TODO I could see unused fields and method
+// TODO If they are not used please do not forget delete them
+
 public class BaseTest {
 
     public static final String BASE_URL = "https://epam.github.io/JDI/";

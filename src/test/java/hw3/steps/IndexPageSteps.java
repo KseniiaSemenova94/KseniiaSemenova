@@ -16,6 +16,7 @@ import static org.testng.Assert.assertTrue;
 
 public class IndexPageSteps {
 
+    // TODO Could be extracted to the base class
     private WebDriver driver;
 
     private IndexPage indexPage;
@@ -25,6 +26,7 @@ public class IndexPageSteps {
         indexPage = new IndexPage(driver);
     }
 
+    // TODO Could be extracted to the base class
     public void login(String name, String password) {
         indexPage.login(name, password);
     }
@@ -109,6 +111,7 @@ public class IndexPageSteps {
         assertEquals(driver.getCurrentUrl(), BaseTest.DIFFERENT_ELEMENTS_PAGE_URL);
     }
 
+    // TODO Why do you decide use List not List<String>???
     private void checkListsEquals(List actualItems, List expectedItems) {
         assertEquals(actualItems.size(), expectedItems.size());
         Collections.sort(actualItems);
