@@ -24,34 +24,37 @@ public class Exercise2 extends BaseTest {
     public Object[][] getData() {
         return new Object[][]{
                 {MetalAndColorsData.builder()
-                        .elements(Collections.singletonList(CheckboxItem.EARTH))
+                        .elements(Collections.singletonList(CheckboxItem.EARTH.getName()))
                         .color(Colors.YELLOW)
                         .metal(RadioItem.GOLD)
                         .build()},
                 {MetalAndColorsData.builder()
-                        .oddNumber(3)
-                        .evenNumber(8)
-                        .vegetables(Arrays.asList(Vegetables.CUCUMBER, Vegetables.TOMATO))
+                        .odd(3)
+                        .even(8)
+                        .vegetables(Arrays.asList(Vegetables.CUCUMBER.getName(), Vegetables.TOMATO.getName()))
                         .build()},
                 {MetalAndColorsData.builder()
-                        .oddNumber(3)
-                        .evenNumber(2)
-                        .elements(Arrays.asList(CheckboxItem.WIND, CheckboxItem.FIRE, CheckboxItem.WATER))
-                        .metal(RadioItem.BRONZE)
-                        .vegetables(Collections.singletonList(Vegetables.ONION))
+                        .odd(3)
+                        .even(2)
+                        .elements(Arrays.asList(CheckboxItem.WIND.getName(), CheckboxItem.FIRE.getName(),
+                                CheckboxItem.WATER.getName()))
+                        .metal(RadioItem.BRONZE.getName())
+                        .vegetables(Collections.singletonList(Vegetables.ONION.getName()))
                         .build()},
                 {MetalAndColorsData.builder()
-                        .oddNumber(5)
-                        .evenNumber(6)
-                        .elements(Collections.singletonList(CheckboxItem.WATER))
-                        .color(Colors.GREEN)
-                        .metal(RadioItem.SELEN)
-                        .vegetables(Arrays.asList(Vegetables.CUCUMBER, Vegetables.TOMATO, Vegetables.VEGETABLES, Vegetables.ONION))
+                        .odd(5)
+                        .even(6)
+                        .elements(Collections.singletonList(CheckboxItem.WATER.getName()))
+                        .color(Colors.GREEN.getName())
+                        .metal(RadioItem.SELEN.getName())
+                        .vegetables(Arrays.asList(Vegetables.CUCUMBER.getName(), Vegetables.TOMATO.getName(),
+                                Vegetables.VEGETABLES.getName(), Vegetables.ONION.getName()))
                         .build()},
                 {MetalAndColorsData.builder()
                         .elements(Collections.singletonList(CheckboxItem.FIRE))
-                        .color(Colors.BLUE)
-                        .vegetables(Arrays.asList(Vegetables.CUCUMBER, Vegetables.TOMATO, Vegetables.VEGETABLES))
+                        .color(Colors.BLUE.getName())
+                        .vegetables(Arrays.asList(Vegetables.CUCUMBER.getName(),
+                                Vegetables.TOMATO.getName(), Vegetables.VEGETABLES.getName()))
                         .build()},
         };
     }
