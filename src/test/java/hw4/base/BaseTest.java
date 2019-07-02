@@ -4,15 +4,18 @@ import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 
 
+import com.codeborne.selenide.Selenide;
 import hw3.enums.PageTitle;
 import hw4.HomePage;
 import hw4.utils.FileUtils;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.Properties;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
 
@@ -46,6 +49,11 @@ public class BaseTest {
         hp.login(LOGIN, PASSWORD);
 
         hp.getUserName().shouldHave(text(USERNAME));
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        close();
     }
 
 

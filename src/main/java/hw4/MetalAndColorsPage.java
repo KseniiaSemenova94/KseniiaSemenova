@@ -108,6 +108,17 @@ public class MetalAndColorsPage extends Page {
             data.getVegetables().stream()
                     .forEach(element -> results.find(text(ResultValue.VEGETABLES.getName())).shouldHave(text(element)));
         }
+
+        if (data.getVegetables() != null) {
+            StringBuilder vegetablesString = new StringBuilder(formData.getVegetables().get(0).getVegetableName());
+            if (data.getVegetables().size() > 1) {
+                for (int i = 1; i < data.getVegetables().size(); i++) {
+                    vegetablesString.append(vegetablesString).append(", ");
+                    vegetablesString.append(vegetablesString).append(data.getVegetables().get(i).getVegetableName());
+                }
+            }
+            $(By.xpath("//li[@class= 'sal-res' and contains(., '"+ ResultValue.VEGETABLES.getName() +": " + vegetablesString + "')]"));
+        }
     }
 
     public void submitForm() {
