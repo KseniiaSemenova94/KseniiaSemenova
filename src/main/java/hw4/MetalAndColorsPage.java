@@ -69,24 +69,25 @@ public class MetalAndColorsPage extends Page {
         }
 
         if (data.getColor() != null) {
-            String colorsCss = String.format(caretCss, FormField.COLOR.getName());
+            String colorsCss = String.format(caretCss, FormField.COLORS.getName());
             $(colorsCss).click();
             clickFormItems(metalDropdownItems, data.getMetal());
         }
 
-        $("#salad-dropdown span.caret").click();
-        $x("//a/label[contains(.,'" + Vegetables.VEGETABLES.getName() + "')]").click();
-
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             for (String veg : data.getVegetables()) {
-                clickFormItems(vegetablesDropdownItems, veg);
+                $(By.xpath("//div[@id = 'salad-dropdown']//button")).click();
+                $(By.xpath("//a[@class='checkbox']/label[contains(., '" + vegetable.getVegetableName() + "')]")).click();
             }
         }
     }
 
     public void checkForm() {
-        Integer sum = data.getEven() + data.getOdd();
-        results.find(Condition.text(FormField.SUMMARY.getName())).shouldHave(text(sum.toString()));
+
+        if (data.getOdd() != null && data.getEven() != null) {
+            Integer sum = data.getEven() + data.getOdd();
+            results.find(Condition.text(FormField.SUMMARY.getName())).shouldHave(text(sum.toString()));
+        }
 
         if (data.getElements() != null && data.getElements().size() != 0) {
             data.getElements().stream()
@@ -94,7 +95,7 @@ public class MetalAndColorsPage extends Page {
         }
 
         if (data.getColor() != null) {
-            results.find(text(FormField.COLOR.getName())).shouldHave(text(data.getColor()));
+            results.find(text(FormField.COLORS.getName())).shouldHave(text(data.getColor()));
         }
 
         if (data.getMetal() != null) {

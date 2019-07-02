@@ -2,7 +2,7 @@ package hw4.enums;
 
 public enum FormField {
 
-    COLOR("Color"),
+    COLORS("Colors"),
     METAL("Metal"),
     SUMMARY("Summary"),
     ELEMENTS("Elements"),
