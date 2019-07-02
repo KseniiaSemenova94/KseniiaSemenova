@@ -1,5 +1,9 @@
 package hw3.enums;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public enum ServiceOption {
 
     SUPPORT("Support"),
@@ -20,5 +24,10 @@ public enum ServiceOption {
 
     public String getName() {
         return name;
+    }
+
+    public static List<String> getAllValues() {
+        return Stream.of(ServiceOption.values()).map(el -> el.getName().toUpperCase())
+                .collect(Collectors.toList());
     }
 }
