@@ -93,7 +93,7 @@ public class MetalAndColorsPage extends Page {
 
         if (data.getElements() != null && data.getElements().size() != 0) {
             data.getElements().stream()
-                    .forEach(element -> results.find(text(ResultValue.getName())).shouldHave(text(element)));
+                    .forEach(element -> results.find(text(ResultValue.ELEMENTS.getName())).shouldHave(text(element)));
         }
 
         if (data.getColor() != null) {
