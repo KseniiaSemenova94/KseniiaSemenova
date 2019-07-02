@@ -3,6 +3,7 @@ package hw4;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import hw3.enums.ResultValue;
 import hw4.builder.MetalAndColorsData;
 import hw4.enums.FormField;
 import hw4.enums.Metals;
@@ -72,7 +73,7 @@ public class MetalAndColorsPage extends Page {
         if (data.getColor() != null) {
             String colorsCss = String.format(caretCss, FormField.COLORS.getName());
             $(colorsCss).click();
-            clickFormItems(colorDropdownItems, data.getMetal());
+            clickFormItems(colorDropdownItems, data.getColor());
         }
 
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
@@ -87,25 +88,25 @@ public class MetalAndColorsPage extends Page {
 
         if (data.getOdd() != null && data.getEven() != null) {
             Integer sum = data.getEven() + data.getOdd();
-            results.find(Condition.text(FormField.SUMMARY.getName())).shouldHave(text(sum.toString()));
+            results.find(Condition.text(ResultValue.SUMMARY.getName())).shouldHave(text(sum.toString()));
         }
 
         if (data.getElements() != null && data.getElements().size() != 0) {
             data.getElements().stream()
-                    .forEach(element -> results.find(text(FormField.ELEMENTS.getName())).shouldHave(text(element)));
+                    .forEach(element -> results.find(text(ResultValue.getName())).shouldHave(text(element)));
         }
 
         if (data.getColor() != null) {
-            results.find(text(FormField.COLORS.getName())).shouldHave(text(data.getColor()));
+            results.find(text(ResultValue.COLOR.getName())).shouldHave(text(data.getColor()));
         }
 
         if (data.getMetal() != null) {
-            results.find(text(FormField.METAL.getName())).shouldHave(text(data.getMetal()));
+            results.find(text(ResultValue.METAL.getName())).shouldHave(text(data.getMetal()));
         }
 
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             data.getVegetables().stream()
-                    .forEach(element -> results.find(text(FormField.VEGETABLES.getName())).shouldHave(text(element)));
+                    .forEach(element -> results.find(text(ResultValue.VEGETABLES.getName())).shouldHave(text(element)));
         }
     }
 
