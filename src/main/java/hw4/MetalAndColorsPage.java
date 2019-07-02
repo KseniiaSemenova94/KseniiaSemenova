@@ -79,7 +79,7 @@ public class MetalAndColorsPage extends Page {
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             for (String veg : data.getVegetables()) {
                 $(By.xpath("//div[@id = 'salad-dropdown']//button")).click();
-                $(By.xpath("//a[@class='checkbox']/label[contains(., '" + Vegetables.VEGETABLES.getName() + "')]")).click();
+                $(By.xpath("//a[@class='checkbox']/label[contains(., '" + veg + "')]")).click();
             }
         }
     }
@@ -110,7 +110,7 @@ public class MetalAndColorsPage extends Page {
         }
 
         if (data.getVegetables() != null) {
-            StringBuilder vegetablesString = new StringBuilder(data.getVegetables().get(0).getVegetableName());
+            StringBuilder vegetablesString = new StringBuilder(data.getVegetables().get(0));
             if (data.getVegetables().size() > 1) {
                 for (int i = 1; i < data.getVegetables().size(); i++) {
                     vegetablesString.append(vegetablesString).append(", ");
