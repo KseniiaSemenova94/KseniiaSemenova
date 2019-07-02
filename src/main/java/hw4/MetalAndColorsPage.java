@@ -7,6 +7,7 @@ import hw4.builder.MetalAndColorsData;
 import hw4.enums.FormField;
 import hw4.enums.Metals;
 import hw4.enums.Vegetables;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
@@ -77,7 +78,7 @@ public class MetalAndColorsPage extends Page {
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             for (String veg : data.getVegetables()) {
                 $(By.xpath("//div[@id = 'salad-dropdown']//button")).click();
-                $(By.xpath("//a[@class='checkbox']/label[contains(., '" + vegetable.getVegetableName() + "')]")).click();
+                $(By.xpath("//a[@class='checkbox']/label[contains(., '" + Vegetables.VEGETABLES.getName() + "')]")).click();
             }
         }
     }
