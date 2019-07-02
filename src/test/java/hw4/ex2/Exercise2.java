@@ -23,5 +23,8 @@ public class Exercise2 extends BaseTest {
 
         mcp.fillForm(data);
 
+        mcp.submitForm();
+
+        mcp.checkForm();
     }
 }

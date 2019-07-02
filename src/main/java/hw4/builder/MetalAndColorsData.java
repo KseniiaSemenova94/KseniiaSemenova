@@ -1,12 +1,19 @@
 package hw4.builder;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 
 public class MetalAndColorsData {
 
-    private Integer odd = 1;
-    private Integer even = 2;
+    @Builder
+    @Getter
+    @ToString
+    private Integer odd;
+    private Integer even;
     private List<String> elements;
     private String color;
     private String metal;
