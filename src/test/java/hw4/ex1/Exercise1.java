@@ -5,7 +5,6 @@ import hw3.enums.HeaderMenuItem;
 import hw3.enums.LeftSideMenuItem;
 import hw3.enums.PageTitle;
 import hw3.enums.ServiceOption;
-import hw4.HomePage;
 import hw4.TableWithPages;
 import hw4.base.BaseTest;
 import hw4.enums.DataTableEvent;
@@ -13,10 +12,7 @@ import hw4.enums.EntriesFieldValue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.value;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.title;
 
 
@@ -25,15 +21,7 @@ public class Exercise1 extends BaseTest {
     private static final String SEARCH_TEXT = "Custom";
 
     @Test
-    public void Exercise1Test() {
-
-        HomePage hp = open(HOME_PAGE_URL, HomePage.class);
-
-        Assert.assertEquals(title(), PageTitle.HOME_PAGE.getName());
-
-        hp.login(LOGIN, PASSWORD);
-
-        hp.getUserName().shouldHave(text(USERNAME));
+    public void exercise1Test() {
 
         hp.clickOnHeaderMenuItem(HeaderMenuItem.SERVICE);
         hp.getOpenedHeaderDropdownOptions()
@@ -64,7 +52,6 @@ public class Exercise1 extends BaseTest {
         twp.getTableRows().shouldBe(CollectionCondition.size(10));
 
         twp.getSearchField().sendKeys(SEARCH_TEXT);
-
         twp.getTableRows().stream().forEach(el -> el.shouldHave(text(SEARCH_TEXT)));
 
     }
