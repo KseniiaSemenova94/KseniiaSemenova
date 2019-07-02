@@ -72,7 +72,7 @@ public class MetalAndColorsPage extends Page {
         if (data.getColor() != null) {
             String colorsCss = String.format(caretCss, FormField.COLORS.getName());
             $(colorsCss).click();
-            clickFormItems(metalDropdownItems, data.getMetal());
+            clickFormItems(colorDropdownItems, data.getMetal());
         }
 
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
