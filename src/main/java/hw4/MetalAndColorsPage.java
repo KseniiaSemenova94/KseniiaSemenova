@@ -63,14 +63,19 @@ public class MetalAndColorsPage extends Page {
         }
 
         if (data.getMetal() != null) {
-            metalDropdown.click();
+            String metalsCss = String.format(caretCss, Metals.METALS.getName());
+            $(metalsCss).click();
             clickFormItems(metalDropdownItems, data.getMetal());
         }
 
         if (data.getColor() != null) {
-            colorDropdown.click();
+            String colorsCss = String.format(caretCss, FormField.COLOR.getName());
+            $(colorsCss).click();
             clickFormItems(metalDropdownItems, data.getMetal());
         }
+
+        $("#salad-dropdown span.caret").click();
+        $x("//a/label[contains(.,'" + Vegetables.VEGETABLES.getName() + "')]").click();
 
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             for (String veg : data.getVegetables()) {
@@ -89,19 +94,12 @@ public class MetalAndColorsPage extends Page {
         }
 
         if (data.getColor() != null) {
-            String colorsCss = String.format(caretCss, FormField.COLOR.getName());
-            $(colorsCss).click();
             results.find(text(FormField.COLOR.getName())).shouldHave(text(data.getColor()));
         }
 
         if (data.getMetal() != null) {
-            String metalsCss = String.format(caretCss, Metals.METALS.getName());
-            $(metalsCss).click();
             results.find(text(FormField.METAL.getName())).shouldHave(text(data.getMetal()));
         }
-
-        $("#salad-dropdown span.caret").click();
-        $x("//a/label[contains(.,'" + Vegetables.VEGETABLES.getName() + "')]").click();
 
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             data.getVegetables().stream()
