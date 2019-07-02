@@ -5,13 +5,19 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import hw4.builder.MetalAndColorsData;
 import hw4.enums.FormField;
+import hw4.enums.Metals;
+import hw4.enums.Vegetables;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.page;
 
 public class MetalAndColorsPage extends Page {
     MetalAndColorsData data;
+
+    private static final String caretCss = "div.btn-group button[title=\"%s\"] span.caret";
 
     @FindBy(css = "#summary-block p.radio")
     private ElementsCollection radios;
@@ -27,15 +33,6 @@ public class MetalAndColorsPage extends Page {
 
     @FindBy(css = "#vegetables li")
     private ElementsCollection vegetablesDropdownItems;
-
-    @FindBy(id = "metals")
-    private SelenideElement metalDropdown;
-
-    @FindBy(css = "button.btn.dropdown-toggle.selectpicker.btn-default")
-    private SelenideElement colorDropdown;
-
-    @FindBy(id = "salad-dropdown")
-    private SelenideElement saladDropdown;
 
     @FindBy(id = "submit-button")
     private SelenideElement submitButton;
@@ -92,12 +89,19 @@ public class MetalAndColorsPage extends Page {
         }
 
         if (data.getColor() != null) {
+            String colorsCss = String.format(caretCss, FormField.COLOR.getName());
+            $(colorsCss).click();
             results.find(text(FormField.COLOR.getName())).shouldHave(text(data.getColor()));
         }
 
         if (data.getMetal() != null) {
+            String metalsCss = String.format(caretCss, Metals.METALS.getName());
+            $(metalsCss).click();
             results.find(text(FormField.METAL.getName())).shouldHave(text(data.getMetal()));
         }
+
+        $("#salad-dropdown span.caret").click();
+        $x("//a/label[contains(.,'" + Vegetables.VEGETABLES.getName() + "')]").click();
 
         if (data.getVegetables() != null && data.getVegetables().size() != 0) {
             data.getVegetables().stream()

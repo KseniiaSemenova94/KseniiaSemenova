@@ -25,8 +25,8 @@ public class Exercise2 extends BaseTest {
         return new Object[][]{
                 {MetalAndColorsData.builder()
                         .elements(Collections.singletonList(CheckboxItem.EARTH.getName()))
-                        .color(Colors.YELLOW)
-                        .metal(RadioItem.GOLD)
+                        .color(Colors.YELLOW.getName())
+                        .metal(RadioItem.GOLD.getName())
                         .build()},
                 {MetalAndColorsData.builder()
                         .odd(3)
@@ -51,7 +51,7 @@ public class Exercise2 extends BaseTest {
                                 Vegetables.VEGETABLES.getName(), Vegetables.ONION.getName()))
                         .build()},
                 {MetalAndColorsData.builder()
-                        .elements(Collections.singletonList(CheckboxItem.FIRE))
+                        .elements(Collections.singletonList(CheckboxItem.FIRE.getName()))
                         .color(Colors.BLUE.getName())
                         .vegetables(Arrays.asList(Vegetables.CUCUMBER.getName(),
                                 Vegetables.TOMATO.getName(), Vegetables.VEGETABLES.getName()))
