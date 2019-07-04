@@ -1,14 +1,14 @@
 package hw4.builder;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+//import lombok.Builder;
+//import lombok.Getter;
+//import lombok.ToString;
 
 import java.util.List;
 
-@Builder
-@Getter
-@ToString
+//@Builder
+//@Getter
+//@ToString
 public class MetalAndColorsData {
 
     private Integer odd;
