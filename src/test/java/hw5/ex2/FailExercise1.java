@@ -1,8 +1,8 @@
-package hw5.ex1;
+package hw5.ex2;
 
+import hw3.enums.HeaderMenuItem;
 import hw5.AllureAttachmentListener;
 import hw5.base.BaseTest;
-import hw3.enums.HeaderMenuItem;
 import hw5.steps.IndexPageSteps;
 import io.qameta.allure.Step;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 @Listeners(AllureAttachmentListener.class)
-public class Exercise1 extends BaseTest {
+public class FailExercise1 extends BaseTest {
 
     IndexPageSteps indexPageSteps;
 
@@ -35,7 +35,7 @@ public class Exercise1 extends BaseTest {
 
         indexPageSteps.login("epam", "1234");
 
-        assertEquals(indexPageSteps.getUserName(), "PITER CHAILOVSKII");
+        assertEquals(indexPageSteps.getUserName(), "PITER CHAILOVSKII1");
 
         getTitle("Home Page");
 
