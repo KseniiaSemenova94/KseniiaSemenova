@@ -3,7 +3,7 @@
 
     <test name="HW5 Exercise1-test">
         <classes>
-            <class name="hw5.Exercise5"/>
+            <class name="hw5.ex1.Exercise1"/>
         </classes>
     </test>
 

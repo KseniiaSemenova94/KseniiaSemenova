@@ -1,9 +1,11 @@
-package hw5;
+package hw5.ex1;
 
+import hw5.AllureAttachmentListener;
 import hw5.base.BaseTest;
 import hw3.enums.HeaderMenuItem;
 import hw5.steps.IndexPageSteps;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -11,7 +13,8 @@ import java.util.Arrays;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class Exercise5 extends BaseTest {
+@Listeners(AllureAttachmentListener.class)
+public class Exercise1 extends BaseTest {
 
     IndexPageSteps indexPageSteps;
 

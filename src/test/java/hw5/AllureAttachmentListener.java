@@ -1,5 +1,6 @@
 package hw5;
 
+import hw5.base.BaseTest;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,8 +16,7 @@ public class AllureAttachmentListener extends TestListenerAdapter {
         public byte[] makeScreenshot(String name) {
             byte[] array = {1};
             try {
-                return ((TakesScreenshot) TestProvider.getInstance().getDriver())
-                        .getScreenshotAs(OutputType.BYTES);
+                return ((TakesScreenshot) BaseTest.driver).getScreenshotAs(OutputType.BYTES);
             } catch (WebDriverException e) {
                 e.printStackTrace();
             }
@@ -27,10 +27,5 @@ public class AllureAttachmentListener extends TestListenerAdapter {
         public void onTestFailure(ITestResult tr) {
             makeScreenshot("failed");
         }
-
-        @Override
-        public void onTestSuccess(ITestResult tr) {
-            makeScreenshot("success");
-        }
     }
-}
+

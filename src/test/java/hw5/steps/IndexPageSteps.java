@@ -5,6 +5,7 @@ import hw3.enums.HeaderMenuItem;
 import hw3.enums.LeftSideMenuItem;
 import hw3.enums.ServiceOption;
 import hw5.voids.IndexPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Collections;
@@ -26,7 +27,7 @@ public class IndexPageSteps {
         indexPage = new IndexPage(driver);
     }
 
-    // TODO Could be extracted to the base class
+    @Step("Login as user: {0}")
     public void login(String name, String password) {
         indexPage.login(name, password);
     }
