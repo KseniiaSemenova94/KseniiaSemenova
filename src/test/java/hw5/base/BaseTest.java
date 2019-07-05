@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeSuite;
 public class BaseTest {
 
     public static final String BASE_URL = "https://epam.github.io/JDI/";
+    public static final String DIFFERENT_ELEMENTS_PAGE_URL = BASE_URL + "different-elements.html";
 
     protected WebDriver driver;
 

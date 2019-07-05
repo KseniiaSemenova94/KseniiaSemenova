@@ -1,10 +1,10 @@
 package hw5.steps;
 
-import hw3.base.BaseTest;
+import hw5.base.BaseTest;
 import hw3.enums.HeaderMenuItem;
 import hw3.enums.LeftSideMenuItem;
 import hw3.enums.ServiceOption;
-import hw3.voids.IndexPage;
+import hw5.voids.IndexPage;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Collections;
