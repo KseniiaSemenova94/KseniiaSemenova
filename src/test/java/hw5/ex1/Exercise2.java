@@ -41,7 +41,7 @@ public class Exercise2 extends BaseTest {
 
         assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");
 
-        assertEquals(driver.getTitle(), "Home Page");
+        getTitle("Home Page");
 
         indexPageSteps.login("epam", "1234");
 

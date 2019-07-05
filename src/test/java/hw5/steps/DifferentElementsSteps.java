@@ -5,6 +5,7 @@ import hw3.enums.ControlType;
 import hw3.enums.DropdownValue;
 import hw3.enums.RadioItem;
 import hw5.voids.DifferentElementsPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -24,20 +25,24 @@ public class DifferentElementsSteps {
         differentElementsPage = new DifferentElementsPage(driver);
     }
 
+    @Step("Check interface on Different elements page, it contains all needed elements")
     public void checkInterfaceContainsElements(List<ControlType> controlTypes) {
         for (ControlType type : controlTypes) {
             assertTrue(differentElementsPage.isAllElementsOfTypeDisplayed(type));
         }
     }
 
+    @Step("Assert that there is Left Section")
     public boolean isLeftSectionDisplayed() {
         return differentElementsPage.isLeftSectionDisplayed();
     }
 
+    @Step("Assert that there is Right Section")
     public boolean isRightSectionDisplayed() {
         return differentElementsPage.isRightSectionDisplayed();
     }
 
+    @Step("Select checkboxes '{0}'")
     public void selectCheckboxesAndCheckLog(List<CheckboxItem> checkboxes, boolean initSelected) {
         for (CheckboxItem checkbox : checkboxes) {
             boolean isSelected = differentElementsPage

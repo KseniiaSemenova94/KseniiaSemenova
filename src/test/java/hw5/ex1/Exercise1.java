@@ -71,8 +71,5 @@ public class Exercise1 extends BaseTest {
 
     }
 
-    @Step("Browser title equals '{0}'")
-    public void getTitle(String expectedTitle){
-        assertEquals(driver.getTitle(), expectedTitle);
-    }
+
 }
