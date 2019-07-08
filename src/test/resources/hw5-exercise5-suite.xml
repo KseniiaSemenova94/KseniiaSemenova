@@ -5,7 +5,6 @@
         <classes>
             <class name="hw5.ex1.Exercise1"/>
             <class name="hw5.ex1.Exercise2"/>
-            <class name="hw5.ex2.FailExercise1"/>
         </classes>
     </test>
 
