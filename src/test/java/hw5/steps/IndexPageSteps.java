@@ -17,7 +17,6 @@ import static org.testng.Assert.assertTrue;
 
 public class IndexPageSteps {
 
-    // TODO Could be extracted to the base class
     private WebDriver driver;
 
     private IndexPage indexPage;
@@ -32,12 +31,12 @@ public class IndexPageSteps {
         indexPage.login(name, password);
     }
 
-    @Step("Name is displayed and equals to expected result")
+    @Step("Checking that user name is displayed and equals to an expected result")
     public String getUserName() {
         return indexPage.getUserName();
     }
 
-    @Step("Menu buttons are displayed and have proper texts")
+    @Step("Checking that menu buttons are displayed and have proper texts")
     public void checkItemsOnTheHeaderSectionAreDisplayedAndHaveText(List<String> items) {
         assertEquals(items.size(), indexPage.getHeaderItemsSize());
         assertTrue(indexPage.allHeaderItemsDisplayed());
@@ -45,19 +44,19 @@ public class IndexPageSteps {
         checkListsEquals(actualHeaderMenuItems, items);
     }
 
-    @Step("Assert that there are '{0}' images on the Index Page and they are displayed")
+    @Step("Checking that there are '{0}' images on the Index Page and they are displayed")
     public void checkImages(Integer amount) {
         assertTrue(indexPage.areImagesDisplayed());
         assertEquals(amount, indexPage.getImagesAmount());
     }
 
-    @Step("Assert that there are 4 texts on the Index Page under icons and they have proper text")
+    @Step("Checking that there are '{0}' texts on the Index Page under images")
     public void checkTextUnderImages(Integer amount) {
         assertTrue(indexPage.areImagesTextDisplayed());
         assertEquals(indexPage.getImagesTextAmount(), amount);
     }
 
-    @Step("Assert a text of the main headers")
+    @Step("Checking that '{0}' text '{1}' of the main headers")
     public void checkMainHeadersDisplayedAndHasText(String titleText, String subtitleText) {
         assertTrue(indexPage.isMainTitleDisplayed());
         assertEquals(titleText, indexPage.getMainTitleText());

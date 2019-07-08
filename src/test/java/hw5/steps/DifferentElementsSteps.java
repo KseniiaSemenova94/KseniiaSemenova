@@ -15,7 +15,6 @@ import static org.testng.Assert.assertTrue;
 
 public class DifferentElementsSteps {
 
-    // TODO Could be extracted to the base class
     private WebDriver driver;
 
     private DifferentElementsPage differentElementsPage;

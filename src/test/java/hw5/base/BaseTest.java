@@ -38,7 +38,7 @@ public class BaseTest {
         driver.close();
     }
 
-    @Step("Browser title equals '{0}'")
+    @Step("Open site and check browser title equals '{0}'")
     public void getTitle(String expectedTitle){
         assertEquals(driver.getTitle(), expectedTitle);
     }

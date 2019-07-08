@@ -4,7 +4,9 @@ import hw3.enums.HeaderMenuItem;
 import hw5.AllureAttachmentListener;
 import hw5.base.BaseTest;
 import hw5.steps.IndexPageSteps;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -27,6 +29,8 @@ public class FailExercise1 extends BaseTest {
     }
 
     @Test
+    @Feature("Checking web elements of Home Page")
+    @Story("Home Page")
     public void exercise1Test() {
 
         assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");

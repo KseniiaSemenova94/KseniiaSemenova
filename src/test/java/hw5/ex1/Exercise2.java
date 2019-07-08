@@ -5,6 +5,8 @@ import hw3.enums.*;
 import hw5.steps.DifferentElementsSteps;
 import hw5.steps.IndexPageSteps;
 import hw5.AllureAttachmentListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -37,6 +39,8 @@ public class Exercise2 extends BaseTest {
     }
 
     @Test
+    @Feature("Checking the transition from Home Page to Different Elements, checking web elements of Different Elements")
+    @Story("Different Elements")
     public void exercise2Test() {
 
         assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");
