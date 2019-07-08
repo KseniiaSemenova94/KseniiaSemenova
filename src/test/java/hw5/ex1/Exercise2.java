@@ -57,6 +57,8 @@ public class Exercise2 extends BaseTest {
 
         indexPageSteps.openHeaderMenuDropdownAndSelectOption(HeaderMenuItem.SERVICE, ServiceOption.DIFFERENT_ELEMENTS);
 
+        getTitle("Different Elements");
+
         differentElementsSteps.checkInterfaceContainsElements(Arrays
                 .asList(ControlType.BUTTON, ControlType.CHECKBOX, ControlType.RADIO, ControlType.DROPDOWN));
 

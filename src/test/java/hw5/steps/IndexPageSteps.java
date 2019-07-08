@@ -56,7 +56,7 @@ public class IndexPageSteps {
         assertEquals(indexPage.getImagesTextAmount(), amount);
     }
 
-    @Step("Checking that '{0}' text '{1}' of the main headers")
+    @Step("Checking that text of the main headers '{0}' and '{1}' equals to an expected results")
     public void checkMainHeadersDisplayedAndHasText(String titleText, String subtitleText) {
         assertTrue(indexPage.isMainTitleDisplayed());
         assertEquals(titleText, indexPage.getMainTitleText());
@@ -64,7 +64,7 @@ public class IndexPageSteps {
         assertEquals(subtitleText, indexPage.getMainSubtitleText());
     }
 
-    @Step("Assert that there is the iframe in the center of page")
+    @Step("Checking that there is the iframe in the center of page")
     public boolean isIFrameDisplayed() {
         return indexPage.isIFrameDisplayed();
     }
@@ -74,7 +74,7 @@ public class IndexPageSteps {
         indexPage.switchToIFrame();
     }
 
-    @Step("Check that there is Epam logo in the left top conner of iframe")
+    @Step("Checking that there is Epam logo in the left top conner of iframe")
     public boolean isLogoDisplayed() {
         return indexPage.isLogoDisplayed();
     }
@@ -84,28 +84,28 @@ public class IndexPageSteps {
         indexPage.switchToDefaultContent();
     }
 
-    @Step("Assert a text equals '{0}' of the sub header")
+    @Step("Checking that the text '{0}' of the sub header equals to an expected results")
     public void checkMainLinkDisplayedAndHasText(String linkText) {
         assertTrue(indexPage.isMainLinkDisplayed());
         assertEquals(linkText, indexPage.getMainLinkText());
     }
 
-    @Step("Assert that '{0}' is a link and has a proper URL")
+    @Step("Checking that '{0}' is a link and has a proper URL")
     public void checkMainLinkHasURL(String url) {
         assertEquals(url, indexPage.getMainLinkURL());
     }
 
-    @Step("Assert that there is Left Section")
+    @Step("Checking that there is Left Section")
     public boolean isLeftSectionDisplayed() {
         return indexPage.isLeftSectionDisplayed();
     }
 
-    @Step("Assert that there is Footer")
+    @Step("Checking that there is Footer")
     public boolean isFooterDisplayed() {
         return indexPage.isFooterDisplayed();
     }
 
-    @Step("Click on '{0}' subcategory in the header and check that drop down contains options")
+    @Step("Click on '{0}' subcategory in the header and check that drop down contains '{1}'")
     public void clickOnHeaderMenuItemAndCheckOptions(HeaderMenuItem headerMenuItem, List<String> options) {
         indexPage.clickOnHeaderMenuItem(headerMenuItem);
         assertTrue(indexPage.isHeaderDropdownDisplayed());
@@ -113,14 +113,14 @@ public class IndexPageSteps {
                 options.stream().map(option -> option.toUpperCase()).collect(Collectors.toList()));
     }
 
-    @Step("Click on '{0}' subcategory in the left section and check that drop down contains options")
+    @Step("Click on '{0}' subcategory in the left section and check that drop down contains '{1}'")
     public void clickOnLeftSectionMenuItemAndCheckOptions(LeftSideMenuItem menuItem, List<String> options) {
         indexPage.clickOnLeftSectionMenuItem(menuItem);
         assertTrue(indexPage.isLeftSideDropdownDisplayed());
         checkListsEquals(indexPage.getOpenedLeftSectionDropdownOptionsText(), options);
     }
 
-    @Step("Open through the header menu '{0}' and '{1}'")
+    @Step("Open through the header menu '{0}' and select '{1}'")
     public void openHeaderMenuDropdownAndSelectOption(HeaderMenuItem headerMenuItem, ServiceOption serviceOption) {
         indexPage.clickOnHeaderMenuItem(headerMenuItem);
         indexPage.clickOnHeaderDropdownOption(serviceOption.getName().toUpperCase());

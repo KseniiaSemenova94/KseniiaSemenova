@@ -24,24 +24,24 @@ public class DifferentElementsSteps {
         differentElementsPage = new DifferentElementsPage(driver);
     }
 
-    @Step("Check interface on Different elements page, it contains all needed elements")
+    @Step("Check interface on Different elements page, it contains all needed elements: '{0}")
     public void checkInterfaceContainsElements(List<ControlType> controlTypes) {
         for (ControlType type : controlTypes) {
             assertTrue(differentElementsPage.isAllElementsOfTypeDisplayed(type));
         }
     }
 
-    @Step("Assert that there is Left Section")
+    @Step("Checking that there is Left Section")
     public boolean isLeftSectionDisplayed() {
         return differentElementsPage.isLeftSectionDisplayed();
     }
 
-    @Step("Assert that there is Right Section")
+    @Step("Checking that there is Right Section")
     public boolean isRightSectionDisplayed() {
         return differentElementsPage.isRightSectionDisplayed();
     }
 
-    @Step("Select checkboxes '{0}'")
+    @Step("Select checkboxes '{0}' and checking Log row has checkbox name and its status is corresponding to selected")
     public void selectCheckboxesAndCheckLog(List<CheckboxItem> checkboxes, boolean initSelected) {
         for (CheckboxItem checkbox : checkboxes) {
             boolean isSelected = differentElementsPage
@@ -57,6 +57,7 @@ public class DifferentElementsSteps {
         }
     }
 
+    @Step("Select radiobutton '{0}' and checking Log row has radiobutton name and its status is corresponding to selected")
     public void selectRadioButtonAndCheckLog(RadioItem radioItem) {
         boolean isSelected = differentElementsPage
                 .selectControlAndGetState(ControlType.RADIO, radioItem.getName());
@@ -66,6 +67,7 @@ public class DifferentElementsSteps {
                 .isElementPresentInLogs(radioItem.getName(), ControlType.RADIO, true));
     }
 
+    @Step("Select dropdown '{0}' and checking Log row has dropdown name and its status is corresponding to selected")
     public void selectItemsInDropdownAndCheckLog(DropdownValue dropdownValue) {
         boolean isSelected = differentElementsPage
                 .selectControlAndGetState(ControlType.DROPDOWN, dropdownValue.getName());
