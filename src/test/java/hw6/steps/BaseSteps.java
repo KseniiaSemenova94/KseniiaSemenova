@@ -3,6 +3,7 @@ package hw6.steps;
 import hw4.utils.FileUtils;
 import hw6.hooks.Context;
 import hw6.pages.HomePage;
+import hw6.pages.UserTable;
 
 import java.util.Properties;
 
@@ -16,8 +17,10 @@ public class BaseSteps {
     protected static final String USERNAME = appProperties.getProperty("user.name");
 
     protected HomePage homePage;
+    protected UserTable userTable;
 
     public BaseSteps() {
         homePage = HomePage.getInstance(Context.getDriver());
+        userTable = UserTable.getInstance(Context.getDriver());
     }
 }
