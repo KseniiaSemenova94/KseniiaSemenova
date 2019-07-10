@@ -90,6 +90,15 @@
                 <suite.xml>src/test/resources/hw5-exercise5-suite.xml</suite.xml>
             </properties>
         </profile>
+        <profile>
+            <id>hw6-suite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw6-suite.xml</suite.xml>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>

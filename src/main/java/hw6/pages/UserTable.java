@@ -1,6 +1,9 @@
 package hw6.pages;
 
 import hw6.enums.UserTableElement;
+import hw6.enums.UserTableUser;
+import hw6.enums.UserTableUserIndex;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +35,9 @@ public class UserTable extends Page {
 
     @FindBy(xpath = "//td//input")
     private List<WebElement> checkboxes;
+
+    @FindBy(css = "ul.panel-body-list.logs")
+    private WebElement logText;
 
     private UserTable(WebDriver driver) {
         super(driver);
@@ -68,6 +74,22 @@ public class UserTable extends Page {
             table.add(row);
         }
         return table;
+    }
+
+    public void clickVipCheckboxFor(String name) {
+        driver.findElement(By.xpath("//input[@id='" + name + "']")).click();
+    }
+
+    public String getLogText() {
+        return logText.getText();
+    }
+
+    public void clickOnDropDown(UserTableUserIndex user) {
+        dropdowns.get(user.getIndex()).click();
+    }
+
+    public List<WebElement> getDropdowns() {
+        return dropdowns;
     }
 
     public static UserTable getInstance(WebDriver driver) {

@@ -3,6 +3,8 @@ package hw6.steps;
 import cucumber.api.java.en.When;
 import hw3.enums.HeaderMenuItem;
 import hw3.enums.ServiceOption;
+import hw6.enums.UserTableUser;
+import hw6.enums.UserTableUserIndex;
 
 public class ActionSteps extends BaseSteps{
 
@@ -21,5 +23,15 @@ public class ActionSteps extends BaseSteps{
     @When("I click on '([^\"]*)' button in Service dropdown")
     public void iClickOnHeaderDropdownOption(ServiceOption serviceOption) {
         homePage.clickOnHeaderDropdownOption(serviceOption.getName().toUpperCase());
+    }
+
+    @When("I select vip checkbox for '([^\"]*)'")
+    public void iSelectVipCheckboxFor(UserTableUser user) {
+        userTable.clickVipCheckboxFor(user.getName());
+    }
+
+    @When("I click on dropdown in column Type for user '([^\"]*)'")
+    public void iClickOnDropdownForUser(UserTableUserIndex user) {
+        userTable.clickOnDropDown(user);
     }
 }

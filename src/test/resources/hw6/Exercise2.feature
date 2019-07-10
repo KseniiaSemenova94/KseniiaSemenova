@@ -20,10 +20,10 @@ Feature: User Table Page
       | 4      | Helen Bennett    | Captain America some description |
       | 5      | Yoshi Tannamuri  | Cyclope some description         |
       | 6      | Giovanni Rovelli | Hulk some description            |
-#    When I select vip checkbox for 'Sergey Ivan'
-#    Then 1 log row has "Vip: condition changed to true" text in log section
-#    When I click on dropdown in column Type for user Roman
-#    Then droplist contains values
-#      | Admin   |
-#      | User    |
-#      | Manager |
+    When I select vip checkbox for 'SERGEY_IVAN'
+    Then log row has 'Vip: condition changed to true' text in log section
+    When I click on dropdown in column Type for user 'ROMAN'
+    Then droplist for 'ROMAN' contains values
+      | Admin   |
+      | User    |
+      | Manager |
