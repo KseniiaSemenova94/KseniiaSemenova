@@ -7,11 +7,11 @@ Feature: User Table Page
     When I click on 'SERVICE' button in Header
     And I click on 'USER_TABLE' button in Service dropdown
     Then 'USER_TABLE' page is opened
-    And '6' 'TYPE_DROPDOWN' are displayed on Users Table on User Table Page
-    And '6' 'USER_NAME' are displayed on Users Table on User Table Page
-    And '6' 'DESCRIPTION_IMAGE' are displayed on Users Table on User Table Page
-    And '6' 'DESCRIPTION_TEXT' are displayed on Users Table on User Table Page
-    And '6' 'CHECKBOX' are displayed on Users Table on User Table Page
+    And '6' 'TYPE_DROPDOWN' are displayed on 'USER_TABLE' Page
+    And '6' 'USER_NAME' are displayed on 'USER_TABLE' Page
+    And '6' 'DESCRIPTION_IMAGE' are displayed on 'USER_TABLE' Page
+    And '6' 'DESCRIPTION_TEXT' are displayed on 'USER_TABLE' Page
+    And '6' 'CHECKBOX' are displayed on 'USER_TABLE' Page
     And User table contains following values:
       | Number | User             | Description                      |
       | 1      | Roman            | Wolverine                        |

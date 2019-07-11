@@ -1,7 +1,6 @@
 package hw6.pages;
 
-import hw6.enums.UserTableElement;
-import hw6.enums.UserTableUser;
+import hw6.enums.Element;
 import hw6.enums.UserTableUserIndex;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -43,7 +42,7 @@ public class UserTable extends Page {
         super(driver);
     }
 
-    public List<WebElement> getTableElements(UserTableElement element) {
+    public List<WebElement> getTableElements(Element element) {
         switch (element) {
             case CHECKBOX:
                 return checkboxes;
@@ -90,6 +89,10 @@ public class UserTable extends Page {
 
     public List<WebElement> getDropdowns() {
         return dropdowns;
+    }
+
+    public static void closePage() {
+        instance = null;
     }
 
     public static UserTable getInstance(WebDriver driver) {

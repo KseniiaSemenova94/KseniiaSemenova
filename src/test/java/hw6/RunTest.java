@@ -7,6 +7,6 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(
         features = {"classpath:hw6"},
         glue = {"classpath:hw6"},
-        tags = {"@UserTablePage"}
+        tags = {"@DifferentElementsPage, @UserTablePage"}
 )
 public class RunTest extends AbstractTestNGCucumberTests {}
